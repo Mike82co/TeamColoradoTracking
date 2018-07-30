@@ -80,11 +80,11 @@ toggleAddTeam = event =>{
 toggleDisplayTeamRoster = event =>{
   this.componentDidMount()
     this.setState({
-      displayNewRiderForm: false,
       displayTotals: true,
       displayTeamRoster: true,
       displayTeams:false,
       displayNewTeamForm: false,
+      displayNewRiderForm: false,
     })
 }
 
@@ -115,7 +115,6 @@ toggleDisplayTeams = event =>{
           <div className="mainContent">
             {this.state.displayNewRiderForm? <ProfileForm passedData={this.state} updateRoster={this.toggleDisplayTeamRoster} /> :null}
             {this.state.displayNewTeamForm? <NewTeamForm passedData={this.state} updateRoster={this.toggleDisplayTeams} /> :null}
-
             {this.state.displayTotals? <MoneyChart dataToSend={chartData}/> : null}
             {this.state.displayTeamRoster?this.state.ridersData.map((rider)=>{
               return <RideCard passedData ={rider} toggle={this.toggleDisplayTeamRoster}/>
