@@ -28,7 +28,7 @@ body{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  width: 100%;
+  width: 24.5%;
 
   margin:3px;
   background:rgba(156,206,255,1);
@@ -91,6 +91,52 @@ body{
     margin: -10 px -10px 10px -10px;
   }
 .riderCard button{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 95%;
+  padding: 3%;
+  margin:5px;
+  background:rgba(156,206,255,1);
+  border-bottom: 2px solidrgba(156,206,255,1);
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;    
+  color: #fff;
+}
+/* Styling for the team card*/
+.teamCard{
+  display: flex;
+  flex-direction: column;
+  border-width: 1px;
+  max-width: 25vw;
+  min-width: 10vw;
+  margin: 10px;
+  padding: 0px;
+  background-color: #F7F7F7
+}
+.teamCard:hover {
+  background-color: rgba(207,232,255,.2);
+}
+.teamCard img{
+  width: 18vw;
+  margin: 1vw;
+}
+.teamCard h1 h2 h3{
+  width: 18vw;
+  margin: 1vw;
+}
+.teamCard #profileName{
+
+    background:rgba(156,206,255,1);
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: -10 px -10px 10px -10px;
+  }
+.teamCard button{
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

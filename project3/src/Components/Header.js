@@ -14,7 +14,7 @@ const Header = (props) => {
   return (    
     <header className="App-header">
       <img src="./assets/teamCo.png"/>
-      <h1>TEAM COLORADO</h1>
+      <h1>TEAM COLORADO DASHBOARD</h1>
       <div id="countdownLogo"><h1>{daysUntil()} Days Until</h1><img  src="./assets/AIDSLifeCycle-Logo.png"/></div>
 
     </header>

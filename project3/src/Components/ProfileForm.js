@@ -48,14 +48,16 @@ class ProfileForm extends Component {
         profileData.goal =this.state.goal
         profileData.currentTotal =this.state.currentTotal
         sendData(profileData)
-        this.props.updateRoster()
+        setTimeout(() => {
+            this.props.updateRoster()
+        }, 200);
+        
     }
 
     render(){
         return(
             <React.Fragment> 
                 <div class="rider-input-form">
-                
                     <h1>New Rider Information Form</h1>
                     <form onSubmit={(e)=>{
                         e.preventDefault()
@@ -74,6 +76,5 @@ class ProfileForm extends Component {
         )
     }
 }
-
 
 export default ProfileForm

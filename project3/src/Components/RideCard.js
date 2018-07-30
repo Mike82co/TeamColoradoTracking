@@ -2,14 +2,16 @@ import React, {Component} from "react"
 import UpdateRiderForm from "./UpdateRiderForm"
 const profileAPI = 'https://project3db.herokuapp.com/riders/'
 
-function deleteCard(id) {
+function deleteCard(id,togg) {
     return fetch(profileAPI + '/' + id, {
         method: "DELETE"
     }).then(response =>
         response.json().then(json => {
             return json;
         })
-    );
+    ).then(()=>{
+        this.props.toggle()
+    });
 }
 
 class RideCard extends Component {
@@ -20,6 +22,14 @@ class RideCard extends Component {
         showUpdateForm:false
         };
     }
+
+toggleUpdate = event =>{
+    this.setState({
+        showUpdateForm: false,
+    })
+    
+  }
+  
 
     render(){
         return(
@@ -35,14 +45,18 @@ class RideCard extends Component {
                             this.setState({
                                 showUpdateForm : !this.state.showUpdateForm
                             })
+                            
                             return  
                         }}>Update</button>
                         <button onClick = {(event)=>{
                             deleteCard(this.props.passedData.id)
+                            // setTimeout(() => {
+                            //     this.props.toggle()
+                            // }, 200);
                         }}>Delete</button>
                     </div>
                 </div>
-                {this.state.showUpdateForm? <UpdateRiderForm passedData={this.props.passedData}/>:null}
+                {this.state.showUpdateForm? <UpdateRiderForm passedData={this.props.passedData} toggle={this.props.toggle}/>:null}
             </React.Fragment>
         )
     }

@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import UpdateRiderForm from "./UpdateRiderForm"
+import UpdateTeamForm from "./UpdateTeamForm"
 const teamAPI = 'https://project3db.herokuapp.com/teams/'
 
 function deleteCard(id) {
@@ -20,6 +20,11 @@ class TeamCard extends Component {
         showUpdateForm:false
         };
     }
+    toggleUpdate = event =>{
+        this.setState({
+            showUpdateForm: false,
+        })
+      }
 
     render(){
         return(
@@ -39,10 +44,13 @@ class TeamCard extends Component {
                         }}>Update</button>
                         <button onClick = {(event)=>{
                             deleteCard(this.props.passedData.id)
+                            setTimeout(() => {
+                                this.props.toggle()
+                            }, 200);
                         }}>Delete</button>
                     </div>
                 </div>
-                {this.state.showUpdateForm? <UpdateRiderForm passedData={this.props.passedData}/>:null}
+                {this.state.showUpdateForm? <UpdateTeamForm passedData={this.props.passedData} toggle={this.toggleUpdate}/>:null}
             </React.Fragment>
         )
     }
