@@ -1,4 +1,4 @@
-import React, { Component,Text} from 'react';
+import React, { Component } from 'react';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import RideCard from './Components/RideCard';
@@ -74,7 +74,6 @@ toggleAddTeam = event =>{
     displayTeams:false,
     displayNewRiderForm: false,
   })
-  console.log(this.state)
 }
 
 toggleDisplayTeamRoster = event =>{
@@ -102,7 +101,6 @@ toggleDisplayTeams = event =>{
   render() {
     return (
       <React.Fragment>
-
         {this.buildChartData()}
         <div className="appContainer">
           <Header />
@@ -123,7 +121,6 @@ toggleDisplayTeams = event =>{
               return <TeamCard passedData={team} toggle={this.toggleDisplayTeams}/>
             }):null}
           </div>
-              
           <Footer />
         </div>
       </React.Fragment>

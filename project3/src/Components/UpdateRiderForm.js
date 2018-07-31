@@ -1,8 +1,6 @@
 import React, {Component} from "react"
 const profileAPI = 'https://project3db.herokuapp.com/riders/'
 
-
-
 class UpdateRiderForm extends Component {
 
     constructor(props) {
@@ -35,10 +33,6 @@ class UpdateRiderForm extends Component {
                     <form onSubmit={(e)=>{
                         e.preventDefault()
                         this.updateData(this.state, this.props.passedData.id)
-                        // setTimeout(() => {
-                        //     this.props.toggle()
-                        //             }, 200);
-                        
                     }}>
                         <input type="text" placeholder={this.props.passedData.riderName} onChange={(event)=> this.setState({riderName:event.target.value})}/>
                         <input type="number" placeholder={"Goal Amount: $"+this.props.passedData.goal} onChange={(event)=> this.setState({goal:event.target.value})}/>
@@ -51,6 +45,5 @@ class UpdateRiderForm extends Component {
         )
     }
 }
-
 
 export default UpdateRiderForm

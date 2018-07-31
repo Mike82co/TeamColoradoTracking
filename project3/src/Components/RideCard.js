@@ -2,16 +2,6 @@ import React, {Component} from "react"
 import UpdateRiderForm from "./UpdateRiderForm"
 const profileAPI = 'https://project3db.herokuapp.com/riders/'
 
-function deleteCard(id) {
-    return fetch(profileAPI + '/' + id, {
-        method: "DELETE"
-    }).then(response =>
-        response.json().then(json => {
-            return json;
-        })
-    );
-}
-
 class RideCard extends Component {
     constructor(props) {
         super(props);
@@ -21,11 +11,23 @@ class RideCard extends Component {
         };
     }
 
-toggleShowForm = event =>{
-    this.setState({
-        showUpdateForm: false,
-    })
-}
+    deleteCard(id) {
+        return fetch(profileAPI + '/' + id, {
+            method: "DELETE"
+        }).then(response =>
+            response.json().then(json => {
+                return json;
+            })
+        ).then(response =>{
+            this.props.toggle()
+        })
+    }
+
+    toggleShowForm = event =>{
+        this.setState({
+            showUpdateForm: false,
+        })
+    }
 
     render(){
         return(
@@ -43,10 +45,8 @@ toggleShowForm = event =>{
                             })
                         }}>Update</button>
                         <button onClick = {(event)=>{
-                            deleteCard(this.props.passedData.id)
-                            // setTimeout(() => {
-                            //     this.props.toggle()
-                            // }, 200);
+                            this.deleteCard(this.props.passedData.id)
+                            this.props.toggle()
                         }}>Delete</button>
                     </div>
                 </div>

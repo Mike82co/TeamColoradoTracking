@@ -1,8 +1,6 @@
 import React, {Component} from "react"
 const teamAPI = 'https://project3db.herokuapp.com/teams/'
 
-
-
 class UpdateTeamForm extends Component {
 
     constructor(props) {
@@ -21,7 +19,7 @@ class UpdateTeamForm extends Component {
             return response.json()
         })
         .then(response =>{
-            this.props.toggle()
+            this.props.toggleRefresh()
         }).catch(function (error) {
             console.error(error)
         })
@@ -35,6 +33,7 @@ class UpdateTeamForm extends Component {
                     <form onSubmit={(e)=>{
                         e.preventDefault()
                         this.updateData(this.state, this.props.passedData.id)
+                        this.props.toggleShowUpdate()
                     }}>
                         <input type="text" placeholder={this.props.passedData.teamName} onChange={(event)=> this.setState({teamName:event.target.value})}/>
                         <input type="number" placeholder={"Goal Amount: $"+this.props.passedData.goalAmount} onChange={(event)=> this.setState({goalAmount:event.target.value})}/>

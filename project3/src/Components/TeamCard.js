@@ -2,16 +2,6 @@ import React, {Component} from "react"
 import UpdateTeamForm from "./UpdateTeamForm"
 const teamAPI = 'https://project3db.herokuapp.com/teams/'
 
-function deleteCard(id) {
-    return fetch(teamAPI + '/' + id, {
-        method: "DELETE"
-    }).then(response =>
-        response.json().then(json => {
-            return json;
-        })
-    );
-}
-
 class TeamCard extends Component {
     constructor(props) {
         super(props);
@@ -24,8 +14,19 @@ class TeamCard extends Component {
         this.setState({
             showUpdateForm: false,
         })
-      }
+    }
 
+    deleteCard(id) {
+        return fetch(teamAPI + '/' + id, {
+            method: "DELETE"
+        }).then(response =>
+            response.json().then(json => {
+                return json;
+            })
+        ).then(response =>{
+            this.props.toggle()
+        });
+    }
     render(){
         return(
             <React.Fragment> 
@@ -34,23 +35,20 @@ class TeamCard extends Component {
                     <img src="https://loremflickr.com/200/200/bikes"/>
                     <h2>Fundraising Goal: $ {this.props.passedData.goalAmount}</h2>
                     <h3>Dollars Raised so far: ${this.props.passedData.currentTotal}</h3>
-                    <h3>Current Members: {}</h3>
+                    <h3>Current Members: </h3>
                     <div id="profile-button-container">
                         <button onClick ={(event)=>{
                             this.setState({
-                                showUpdateForm : !this.state.showUpdateForm
+                                showUpdateForm:true
                             })
                             return  
                         }}>Update</button>
                         <button onClick = {(event)=>{
-                            deleteCard(this.props.passedData.id)
-                            setTimeout(() => {
-                                this.props.toggle()
-                            }, 200);
+                            this.deleteCard(this.props.passedData.id)
                         }}>Delete</button>
                     </div>
                 </div>
-                {this.state.showUpdateForm? <UpdateTeamForm passedData={this.props.passedData} toggle={this.toggleUpdate}/>:null}
+                {this.state.showUpdateForm? <UpdateTeamForm passedData={this.props.passedData} toggleShowUpdate={this.toggleUpdate} toggleRefresh={this.props.toggle}/>:null}
             </React.Fragment>
         )
     }

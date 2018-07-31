@@ -16,11 +16,8 @@ class MoneyChart extends Component {
         return(
             <React.Fragment> 
                 <PieChart data={this.props.dataToSend} width="400px" height="400px" donut="true" />
-                {}
             </React.Fragment>
         )
     }
 }
-
-
 export default MoneyChart
