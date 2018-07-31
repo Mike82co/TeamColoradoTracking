@@ -65,4 +65,5 @@ it('Should display a new rider form', () => {
  **Mike Lavin**
 
 ## Deployed Link
-https://p3tower.firebaseapp.com/
+https://p3tower.firebaseapp.com/ . client
+https://project3db.herokuapp.com . server
