@@ -30,7 +30,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ##Basic Navagation
 
-![Screen Shot](mainScreen.png)
+![Screen Shot](./project3/mainScreen.png)
 
 
 ## Running the tests
